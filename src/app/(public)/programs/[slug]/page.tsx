@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import RoadmapVisualization from "@/components/roadmap/RoadmapVisualization";
+import { CareerIcon } from "@/components/ui/Icons";
 import type { Metadata } from "next";
 
 export async function generateStaticParams() {
@@ -147,10 +148,8 @@ export default async function ProgramDetailPage({ params }: { params: { slug: st
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
               {program.careerOutcomes.map((outcome) => (
                 <div key={outcome.id} className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-card transition-shadow">
-                  <div className="text-3xl mb-3">
-                    {{"code": "💻", "brain": "🧠", "briefcase": "💼", "server": "🖥️", "shield": "🛡️",
-                      "target": "🎯", "chart": "📊", "database": "🗄️", "trending": "📈", "flask": "🔬",
-                      "layers": "📚", "calendar": "📅", "users": "👥", "message": "💬"}[outcome.icon] || "⭐"}
+                  <div className="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-navy mb-4">
+                    <CareerIcon name={outcome.icon} className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-navy mb-2">{outcome.title}</h3>
                   {outcome.description && (

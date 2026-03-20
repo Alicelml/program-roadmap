@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("🌱 Seeding database...");
+  console.log("Seeding database...");
 
   // Admin user
   const hashedPassword = await bcrypt.hash("Admin@123", 12);
@@ -17,7 +17,7 @@ async function main() {
       name: "Admin User",
     },
   });
-  console.log("✅ Admin user created: admin@programroadmap.edu / Admin@123");
+  console.log("Admin user created: admin@programroadmap.edu / Admin@123");
 
   // Site settings
   const settings = [
@@ -48,7 +48,7 @@ async function main() {
       create: s,
     });
   }
-  console.log("✅ Site settings created");
+  console.log("Site settings created");
 
   // Programs
   const csProgram = await prisma.program.upsert({
@@ -111,7 +111,7 @@ async function main() {
     },
   });
 
-  console.log("✅ Programs created");
+  console.log("Programs created");
 
   // CS Courses
   const csCourses = [
@@ -288,7 +288,7 @@ async function main() {
     });
   }
 
-  console.log("✅ Courses and career outcomes created");
+  console.log("Courses and career outcomes created");
 
   // Alumni
   const alumni = [
@@ -367,7 +367,7 @@ async function main() {
       create: a,
     });
   }
-  console.log("✅ Alumni created");
+  console.log("Alumni created");
 
   // Industry Partners
   const partners = [
@@ -390,12 +390,12 @@ async function main() {
       create: p,
     });
   }
-  console.log("✅ Industry partners created");
+  console.log("Industry partners created");
 
-  console.log("🎉 Database seeded successfully!");
-  console.log("\n📝 Admin credentials:");
-  console.log("   Email:    admin@programroadmap.edu");
-  console.log("   Password: Admin@123");
+  console.log("Database seeded successfully!");
+  console.log("\nAdmin credentials:");
+  console.log("  Email:    admin@programroadmap.edu");
+  console.log("  Password: Admin@123");
 }
 
 main()
