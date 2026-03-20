@@ -1,2 +1,153 @@
-# program-roadmap
-Program Roadmap
+# Program Roadmap — Adelaide University
+
+A web-based platform helping students locate information about their studies, programs, industry and alumni — and a marketing tool for prospective students.
+
+Built with **Next.js 14**, **Prisma**, **NextAuth**, and **Tailwind CSS**. Designed in the style of [Adelaide University](https://adelaideuni.edu.au/).
+
+---
+
+## Features
+
+### Public (no login required)
+- **Home** — hero section, stats, featured programs, alumni spotlight, industry partners
+- **Programs** — browse all programs by level (Bachelor/Masters/PhD)
+- **Program Detail** — interactive visual roadmap (year-by-year course view with hover tooltips), career outcomes, alumni
+- **Alumni** — success stories and testimonials
+- **Industry Partners** — partners grouped by tier (Gold/Silver/Bronze)
+
+### Admin (login required)
+- **Dashboard** — overview stats and quick actions
+- **Program Management** — create, edit, delete programs with full course & career outcome management
+- **Alumni Management** — add/edit alumni profiles and testimonials
+- **Industry Partner Management** — manage partner listings and tiers
+- **Site Content Editor** — edit all page text, hero copy, stats, and contact info without code changes
+
+---
+
+## Quick Start
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Copy environment file
+cp .env.example .env.local
+# Edit .env.local and set NEXTAUTH_SECRET to a strong random string
+
+# 3. Create database and push schema
+DATABASE_URL="file:./prisma/dev.db" npx prisma db push
+
+# 4. Seed with sample data
+DATABASE_URL="file:./prisma/dev.db" npx ts-node --compiler-options '{"module":"CommonJS"}' prisma/seed.ts
+
+# 5. Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+### Admin Access
+- URL: `http://localhost:3000/admin/login`
+- Email: `admin@programroadmap.edu`
+- Password: `Admin@123`
+
+> Change these credentials after first login for production use.
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── (public)/          # Public-facing pages
+│   │   ├── page.tsx       # Home
+│   │   ├── programs/      # Programs list + detail with roadmap
+│   │   ├── alumni/        # Alumni page
+│   │   └── industry/      # Industry partners
+│   ├── admin/             # Admin section (protected)
+│   │   ├── login/
+│   │   └── dashboard/     # CMS dashboard
+│   └── api/               # REST API routes
+├── components/
+│   ├── layout/            # Navbar, Footer, AdminSidebar
+│   ├── roadmap/           # Interactive roadmap visualization
+│   └── admin/             # Admin forms and tables
+├── lib/
+│   ├── prisma.ts          # Database client
+│   ├── auth.ts            # NextAuth config
+│   └── utils.ts           # Utilities
+└── middleware.ts           # Route protection
+```
+
+---
+
+## Deploying to Vercel
+
+### 1. Set up Vercel Postgres
+In your Vercel project, go to **Storage** → **Create Database** → **Postgres**. Copy the connection string.
+
+### 2. Update `prisma/schema.prisma`
+Change the provider from `sqlite` to `postgresql`:
+```prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+### 3. Set Environment Variables in Vercel
+```
+DATABASE_URL        = your-postgres-connection-string
+NEXTAUTH_SECRET     = your-secret-32-char-string (openssl rand -base64 32)
+NEXTAUTH_URL        = https://your-domain.vercel.app
+```
+
+### 4. Update Build Command
+In Vercel project settings, set:
+```
+Build Command: prisma generate && prisma migrate deploy && next build
+```
+
+### 5. Run Seed (first deploy only)
+After first deployment, run the seed via Vercel CLI:
+```bash
+vercel env pull .env.production.local
+DATABASE_URL=<your-postgres-url> npx ts-node --compiler-options '{"module":"CommonJS"}' prisma/seed.ts
+```
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| Database | Prisma + SQLite (dev) / PostgreSQL (prod) |
+| Auth | NextAuth v4 (Credentials) |
+| Deployment | Vercel |
+
+---
+
+## Design
+
+Inspired by [Adelaide University](https://adelaideuni.edu.au/):
+- **Primary colour**: Deep Navy `#002147`
+- **Accent colour**: Gold `#FFB81C`
+- Clean institutional typography with Inter font
+- Card-based layouts with subtle shadows
+- Responsive mobile-first design
+
+---
+
+## Course Types (Roadmap)
+
+| Type | Colour | Description |
+|------|--------|-------------|
+| Core | Navy | Mandatory foundational courses |
+| Elective | Gray | Student-chosen courses |
+| Specialization | Teal | Advanced stream courses |
+| Capstone | Gold | Final-year major project |
+| Industry | Green | Courses delivered with industry partners |

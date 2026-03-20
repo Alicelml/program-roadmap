@@ -69,6 +69,13 @@ web_modules/
 .env
 .env.*
 !.env.example
+.env.local
+
+# database
+*.db
+*.db-journal
+prisma/dev.db
+prisma/dev.db-journal
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

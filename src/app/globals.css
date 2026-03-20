@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #140F50;
+  --color-navy-light: #1F1666;
+  --color-navy-dark: #0A0830;
+  --color-brand: #1448FF;
+  --color-brand-dark: #0A35CC;
+  --color-purple: #6956CC;
+  --color-cream: #F9F2E6;
+  --color-cream-dark: #EFE5CC;
+  --color-white: #ffffff;
+  --color-text: #140F50;
+  --color-text-muted: #6B7280;
+  --color-border: #E8E4F0;
+  --color-surface: #F9F2E6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-gray-900;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--color-text);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+    color: var(--color-navy);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  /* Primary button: violet background */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-navy text-white font-medium rounded-lg
+           hover:bg-navy-light transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2;
+  }
+
+  /* CTA button: brand blue */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand text-white font-semibold rounded-lg
+           hover:bg-brand-dark transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+
+  /* Outline on dark background: white border */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-white text-white font-medium rounded-lg
+           hover:bg-white hover:text-navy transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+  }
+
+  /* Outline on light background: navy border */
+  .btn-outline-navy {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg
+           hover:bg-navy hover:text-white transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-navy focus:ring-offset-2;
+  }
+
+  /* Brand blue outline */
+  .btn-outline-brand {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-brand text-brand font-medium rounded-lg
+           hover:bg-brand hover:text-white transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-gray-100 shadow-card overflow-hidden;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900
+           focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent
+           placeholder:text-gray-400 transition-colors bg-white;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1.5;
+  }
+
+  /* Course type badges */
+  .badge-core {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-navy text-white;
+  }
+
+  .badge-elective {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700;
+  }
+
+  .badge-specialization {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple text-white;
+  }
+
+  .badge-capstone {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand text-white;
+  }
+
+  .badge-industry {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-teal-600 text-white;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #F0EDF9; }
+::-webkit-scrollbar-thumb { background: #9B91D9; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6956CC; }
+
+/* Roadmap */
+.roadmap-container {
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.course-node {
+  transition: all 0.2s ease;
+}
+
+.course-node:hover {
+  transform: translateY(-2px);
+}

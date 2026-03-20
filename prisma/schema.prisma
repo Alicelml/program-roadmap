@@ -1,0 +1,102 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSettings {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Program {
+  id             String          @id @default(cuid())
+  slug           String          @unique
+  title          String
+  description    String
+  level          String          // Bachelor, Masters, PhD, Diploma
+  duration       String          // e.g. "3 years"
+  featured       Boolean         @default(false)
+  published      Boolean         @default(true)
+  heroImage      String?
+  overview       String          @default("")
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  courses        Course[]
+  careerOutcomes CareerOutcome[]
+  alumni         Alumni[]
+}
+
+model Course {
+  id          String   @id @default(cuid())
+  program     Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  programId   String
+  code        String
+  title       String
+  description String   @default("")
+  year        Int      // 1, 2, 3, 4
+  semester    Int      // 1, 2
+  courseType  String   @default("CORE") // CORE, ELECTIVE, SPECIALIZATION, CAPSTONE, INDUSTRY
+  units       Int      @default(3)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CareerOutcome {
+  id          String   @id @default(cuid())
+  program     Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
+  programId   String
+  title       String
+  description String   @default("")
+  icon        String   @default("briefcase")
+  sortOrder   Int      @default(0)
+}
+
+model Alumni {
+  id             String   @id @default(cuid())
+  name           String
+  role           String
+  company        String
+  graduationYear Int
+  bio            String   @default("")
+  testimonial    String   @default("")
+  photo          String?
+  featured       Boolean  @default(false)
+  linkedin       String?
+  program        Program? @relation(fields: [programId], references: [id], onDelete: SetNull)
+  programId      String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model IndustryPartner {
+  id          String   @id @default(cuid())
+  name        String
+  description String   @default("")
+  logo        String?
+  website     String?
+  category    String   @default("Technology") // Technology, Finance, Healthcare, Engineering, etc.
+  tier        String   @default("SILVER")      // GOLD, SILVER, BRONZE
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
