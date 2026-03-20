@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -35,6 +36,9 @@ export async function POST(req: NextRequest) {
       programId: programId || null,
     },
   });
+
+  revalidatePath("/");
+  revalidatePath("/alumni");
 
   return NextResponse.json(alumni, { status: 201 });
 }

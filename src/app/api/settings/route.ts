@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -13,7 +14,6 @@ export async function PUT(req: NextRequest) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const body = await req.json();
-  // body: { key: string; value: string }[]
   const updates = Array.isArray(body) ? body : [body];
 
   const results = await Promise.all(
@@ -25,6 +25,11 @@ export async function PUT(req: NextRequest) {
       })
     )
   );
+
+  revalidatePath("/");
+  revalidatePath("/programs");
+  revalidatePath("/alumni");
+  revalidatePath("/industry");
 
   return NextResponse.json(results);
 }

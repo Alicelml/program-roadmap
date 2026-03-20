@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -23,6 +24,9 @@ export async function POST(req: NextRequest) {
       sortOrder: Number(sortOrder) || 0,
     },
   });
+
+  const program = await prisma.program.findUnique({ where: { id: programId }, select: { slug: true } });
+  if (program) revalidatePath(`/programs/${program.slug}`);
 
   return NextResponse.json(outcome, { status: 201 });
 }

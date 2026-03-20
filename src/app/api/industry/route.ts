@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -27,6 +28,9 @@ export async function POST(req: NextRequest) {
       published: published !== false,
     },
   });
+
+  revalidatePath("/");
+  revalidatePath("/industry");
 
   return NextResponse.json(partner, { status: 201 });
 }

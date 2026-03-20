@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -25,6 +26,9 @@ export async function POST(req: NextRequest) {
   const program = await prisma.program.create({
     data: { title, description: description || "", level, duration, overview: overview || "", featured: featured || false, published: published !== false, slug },
   });
+
+  revalidatePath("/");
+  revalidatePath("/programs");
 
   return NextResponse.json(program, { status: 201 });
 }

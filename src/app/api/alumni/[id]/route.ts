@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -23,6 +24,9 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     },
   });
 
+  revalidatePath("/");
+  revalidatePath("/alumni");
+
   return NextResponse.json(alumni);
 }
 
@@ -31,5 +35,9 @@ export async function DELETE(_: NextRequest, { params }: { params: { id: string 
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   await prisma.alumni.delete({ where: { id: params.id } });
+
+  revalidatePath("/");
+  revalidatePath("/alumni");
+
   return NextResponse.json({ success: true });
 }
