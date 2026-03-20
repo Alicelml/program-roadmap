@@ -32,7 +32,7 @@ async function main() {
     { key: "home.stats.alumni", value: "80,000+" },
     { key: "home.stats.partners", value: "200+" },
     { key: "home.about.title", value: "Your Academic Journey, Visualised" },
-    { key: "home.about.description", value: "We help students navigate their degree with clarity. From first-year foundations to career-ready capstones, our interactive roadmaps show you exactly where you're headed — and how to get there." },
+    { key: "home.about.description", value: "We help students navigate their degree with clarity. From first-year foundations to career-ready capstones, our interactive roadmaps show you exactly where you're headed, and how to get there." },
     { key: "contact.email", value: "info@programroadmap.edu.au" },
     { key: "contact.phone", value: "+61 8 8313 5208" },
     { key: "contact.address", value: "North Terrace, Adelaide SA 5005" },
@@ -92,7 +92,7 @@ async function main() {
       duration: "3 years",
       featured: true,
       published: true,
-      overview: "The Bachelor of Business Information Systems prepares you to lead at the intersection of technology and business. You will develop expertise in systems analysis, project management, enterprise architecture, and digital transformation — skills that are in high demand across every sector of the economy.",
+      overview: "The Bachelor of Business Information Systems prepares you to lead at the intersection of technology and business. You will develop expertise in systems analysis, project management, enterprise architecture, and digital transformation, with skills that are in high demand across every sector of the economy.",
     },
   });
 
@@ -299,7 +299,7 @@ async function main() {
       company: "Google",
       graduationYear: 2021,
       bio: "Sarah graduated top of her class in Computer Science and joined Google's Sydney office as part of their infrastructure team.",
-      testimonial: "The program roadmap gave me a clear vision from day one. The industry project in my final year was what landed me my role at Google — I came in with real experience, not just theory.",
+      testimonial: "The program roadmap gave me a clear vision from day one. The industry project in my final year was what landed me my role at Google, and I came in with real experience, not just theory.",
       featured: true,
       programId: csProgram.id,
     },

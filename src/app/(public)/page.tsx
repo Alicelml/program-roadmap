@@ -50,12 +50,12 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-navy min-h-[580px] flex items-center">
         {/* Geometric background */}
         <div className="absolute inset-0 pointer-events-none" aria-hidden>
-          {/* Large circle — top right */}
+          {/* Large circle, top right */}
           <div
             className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full border border-white/5"
             style={{ background: "radial-gradient(circle, rgba(20,72,255,0.15) 0%, transparent 70%)" }}
           />
-          {/* Small circle — bottom left */}
+          {/* Small circle, bottom left */}
           <div
             className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full"
             style={{ background: "radial-gradient(circle, rgba(105,86,204,0.2) 0%, transparent 70%)" }}
@@ -76,7 +76,7 @@ export default async function HomePage() {
             {/* Label */}
             <div className="inline-flex items-center gap-2 border border-white/10 bg-white/5 rounded-full px-4 py-1.5 text-white/60 text-xs font-medium tracking-wide mb-8">
               <span className="w-1.5 h-1.5 bg-brand rounded-full" />
-              Adelaide University — Program Roadmap
+              Adelaide University · Program Roadmap
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.12] mb-6 tracking-tight">

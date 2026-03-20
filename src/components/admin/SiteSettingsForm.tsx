@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const SECTIONS = [
   {
-    title: "Home Page — Hero",
+    title: "Home Page: Hero",
     keys: [
       { key: "home.hero.title", label: "Hero Headline", type: "text", placeholder: "Chart Your Path to Success" },
       { key: "home.hero.subtitle", label: "Hero Subtitle", type: "textarea", placeholder: "Explore programs, connect with industry..." },
@@ -13,7 +13,7 @@ const SECTIONS = [
     ],
   },
   {
-    title: "Home Page — Statistics",
+    title: "Home Page: Statistics",
     keys: [
       { key: "home.stats.students", label: "Students Count", type: "text", placeholder: "12,000+" },
       { key: "home.stats.programs", label: "Programs Count", type: "text", placeholder: "50+" },
@@ -22,7 +22,7 @@ const SECTIONS = [
     ],
   },
   {
-    title: "Home Page — About Section",
+    title: "Home Page: About Section",
     keys: [
       { key: "home.about.title", label: "Section Title", type: "text", placeholder: "Your Academic Journey, Visualised" },
       { key: "home.about.description", label: "Section Description", type: "textarea", placeholder: "Description text..." },
@@ -69,7 +69,8 @@ export default function SiteSettingsForm({ initialSettings }: { initialSettings:
         setSaved(true);
         setTimeout(() => setSaved(false), 3000);
       } else {
-        setError("Failed to save settings");
+        const data = await res.json().catch(() => ({}));
+        setError(`Failed to save settings (${res.status}${data.error ? `: ${data.error}` : ""})`);
       }
     } catch {
       setError("An error occurred");
