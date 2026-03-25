@@ -29,7 +29,7 @@ export default async function AlumniPage() {
   return (
     <>
       {/* Header */}
-      <section className="relative overflow-hidden min-h-[280px] flex items-center">
+      <section className="relative overflow-hidden min-h-[620px] flex items-center">
         <Image
           src="/images/banner-alumni.jpg"
           alt="Adelaide University Alumni"
@@ -38,7 +38,7 @@ export default async function AlumniPage() {
           priority
         />
         <div className="absolute inset-0 bg-navy/70" />
-        <div className="container-page relative z-10 py-16 md:py-20">
+        <div className="container-page relative z-10 py-24">
           <nav className="text-white/60 text-sm mb-4">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>
             <span className="mx-2">/</span>
