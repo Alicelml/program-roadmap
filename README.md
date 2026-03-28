@@ -48,10 +48,8 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ### Admin Access
 - URL: `http://localhost:3000/admin/login`
-- Email: `admin@programroadmap.edu`
-- Password: `Admin@123`
-
-> Change these credentials after first login for production use.
+- Default credentials are set during database seeding (see `prisma/seed.ts`).
+- Change credentials after first login before deploying to production.
 
 ---
 
