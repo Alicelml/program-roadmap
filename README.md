@@ -1,6 +1,6 @@
 # Program Roadmap of Adelaide University
 
-A web-based platform helping students locate information about their studies, programs, industry and alumni — and a marketing tool for prospective students.
+A web-based platform helping students locate information about their studies, programs, industry and alumni, and a marketing tool for prospective students.
 
 Built with **Next.js 14**, **Prisma**, **NextAuth**, and **Tailwind CSS**. Designed to match the Adelaide University 2026 brand identity.
 
@@ -141,13 +141,12 @@ Follows the **Adelaide University 2026 brand identity**:
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| Navy | `#140F50` | Primary dark — headers, nav, sidebar |
-| Blue Ribbon | `#1448FF` | CTA / accent — buttons, links, active states |
-| Blue Marguerite | `#6956CC` | Secondary purple — specialization badges |
-| Spanish White | `#F9F2E6` | Warm cream — section backgrounds |
+| Navy | `#140F50` | Primary dark: headers, nav, sidebar |
+| Blue Ribbon | `#1448FF` | CTA / accent: buttons, links, active states |
+| Blue Marguerite | `#6956CC` | Secondary purple: specialization badges |
+| Spanish White | `#F9F2E6` | Warm cream: section backgrounds |
 
 - Official university logo (`au-logo-dark-blue-horizontal.svg`) in Navbar and Footer
-- SVG icon library throughout — no emoji
 - Inter font, card-based layouts, mobile-first responsive design
 
 ---
