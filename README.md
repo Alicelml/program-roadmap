@@ -1,4 +1,4 @@
-# Program Roadmap — Adelaide University
+# Program Roadmap of Adelaide University
 
 A web-based platform helping students locate information about their studies, programs, industry and alumni — and a marketing tool for prospective students.
 
@@ -9,18 +9,18 @@ Built with **Next.js 14**, **Prisma**, **NextAuth**, and **Tailwind CSS**. Desig
 ## Features
 
 ### Public (no login required)
-- **Home** — hero section, stats, featured programs, alumni spotlight, industry partners
-- **Programs** — browse all programs by level (Bachelor/Masters/PhD)
-- **Program Detail** — interactive visual roadmap (year-by-year course view with hover tooltips), career outcomes, alumni
-- **Alumni** — success stories and testimonials
-- **Industry Partners** — partners grouped by tier (Gold/Silver/Bronze)
+- **Home:** hero section, stats, featured programs, alumni spotlight, industry partners
+- **Programs:** browse all programs by level (Bachelor/Masters/PhD)
+- **Program Detail:** interactive visual roadmap (year-by-year course view with hover tooltips), career outcomes, alumni
+- **Alumni:** success stories and testimonials
+- **Industry Partners:** partners grouped by tier (Gold/Silver/Bronze)
 
 ### Admin (login required)
-- **Dashboard** — overview stats and quick actions
-- **Program Management** — create, edit, delete programs with full course & career outcome management
-- **Alumni Management** — add/edit alumni profiles and testimonials
-- **Industry Partner Management** — manage partner listings and tiers
-- **Site Content Editor** — edit all page text, hero copy, stats, and contact info without code changes
+- **Dashboard:** overview stats and quick actions
+- **Program Management:** create, edit, delete programs with full course & career outcome management
+- **Alumni Management:** add/edit alumni profiles and testimonials
+- **Industry Partner Management:** manage partner listings and tiers
+- **Site Content Editor:** edit all page text, hero copy, stats, and contact info without code changes
 
 ---
 
